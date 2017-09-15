@@ -1,21 +1,20 @@
 #ifndef GRADE_HPP
 #define GRADE_HPP
-#include <string>
 
 using namespace std;
 
+const int tamanho = 100;
+
 class Grade{
-  int tamanho;
-  bool grade[tamanho][tamanho];
-  bool grade2[tamanho][tamanho];
+  bool grade[100][100];
+  bool grade2[100][100];
 
 public:
   Grade();
-  int getTamanho();
-  void setTamanho(int tamanho);
-  void imprimiGrade(bool grade[tamanho+1][tamanho+1]);
-  void atualizaGrade();
-  void comparaGrade(bool grade[tamanho+1][tamanho+1], bool grade2[tamanho+1][tamanho+1]);
+  void imprimirGrade(bool grade);
+  void aplicarRegras(bool grade);
+  void atribuirValor(bool grade);
+  void compararGrade(bool grade, bool grade2);
 
 };
 #endif
