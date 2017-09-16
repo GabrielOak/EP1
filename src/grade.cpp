@@ -60,7 +60,7 @@ void Grade::compararGrade(bool,bool){
   }
 }
 void Grade::atribuirValor(bool){
-  for (int a=0; a<tamanho; a++){
+  /*for (int a=0; a<tamanho; a++){
     for (int b=0; b<tamanho; b++){
       if(a == b){
         grade[a][b] = true;
@@ -69,5 +69,28 @@ void Grade::atribuirValor(bool){
         grade[a][b] = false;
       }
     }
-  }
+  }*/
+
+
+}
+void Grade::setForma(int x, int y){
+    grade[x][y] = true;
+}
+int Grade::getX(){
+  return x;
+}
+void Grade::setX(int x){
+  this->x = x;
+}
+int Grade::getY(){
+  return y;
+}
+void Grade::setY(int y){
+  this->y = y;
+}
+int Grade::getCoordenada(){
+  return coordenada;
+}
+void Grade::setCoordenada(int coordenada){
+  this->coordenada = coordenada;
 }
