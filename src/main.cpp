@@ -1,19 +1,26 @@
 #include "grade.hpp"
 #include "block.hpp"
+#include "blinker.hpp"
+#include "glinder.hpp"
+#include "gosperglidergun.hpp"
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
 int main(){
 
-  Grade * gradea = new Block();
+  Grade * gradea = new GosperGliderGun();
   bool grade;
-
-  gradea->setX(3);
-  gradea->setY(3);
+  bool grade2;
 
   gradea->imprimirGrade(grade);
 
-
+  while(1){
+    gradea->regras(grade, grade2);
+    gradea->compararGrade(grade, grade2);
+    gradea->imprimirGrade(grade);
+    usleep(200000);
+  }
   return 0;
 }
