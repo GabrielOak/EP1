@@ -6,8 +6,8 @@ using namespace std;
 const int tamanho = 40;
 
 class Grade{
-  bool grade[40][40];
-  bool grade2[40][40];
+  bool grade[41][41];
+  bool grade2[41][41];
   int x, y, coordenada;
 
 public:

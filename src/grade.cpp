@@ -1,10 +1,27 @@
 #include "grade.hpp"
 #include <iostream>
+#include <unistd.h>
+
+using namespace std;
 
 Grade::Grade(){
 
   grade[40][40];
   grade2[40][40];
+
+  for(int a =0; a < tamanho; a++){
+      for(int b = 0; b < tamanho; b++){
+          grade[a][b] = false;
+      }
+  }
+
+  for(int a =0; a < tamanho; a++){
+      for(int b = 0; b < tamanho; b++){
+          grade2[a][b] = false;
+      }
+  }
+
+
 }
 
 void Grade::imprimirGrade(bool){
@@ -16,14 +33,46 @@ void Grade::imprimirGrade(bool){
       else {
         cout << " .";
       }
-      if(b == tamanho - 1){
+      if(b == tamanho -1){
         cout << endl;
       }
     }
   }
+  cout << endl;
 
 }
 void Grade::atribuirValor(bool){
+
+  int i, j, n;
+
+  cout << "Modo manual:" << endl;
+  cout << "Insira o numero de celulas que deseja colocar" << endl;
+  cin >> n;
+
+  for(int a=0; a<n; a++){
+    cout << "Insira a coordenada da celula" << endl;
+    cin >> i >> j;
+    if(i<1 || i>39){
+      cout << "Coordenada invalida";
+      cout << "Insira uma coordenada entre 1 e 39" << endl;
+      cin >> i;
+    }
+    if(j<1 || j>39){
+      cout << "Coordenada invalida";
+      cout << "Insira uma coordenada entre 1 e 39" << endl;
+      cin >> j;
+    }
+    grade[i][j] = true;
+    imprimirGrade(grade);
+  }
+
+  for(int a=0; a<10; a++){
+    regras(grade, grade2);
+    compararGrade(grade, grade2);
+    imprimirGrade(grade);
+    usleep(200000);
+  }
+
   /*for (int a=0; a<tamanho; a++){
     for (int b=0; b<tamanho; b++){
       if(a == b){
@@ -59,11 +108,9 @@ void Grade::setCoordenada(int coordenada){
   this->coordenada = coordenada;
 }
 void Grade::compararGrade (bool, bool){
-    for(int a =0; a < tamanho; a++)
-    {
-        for(int b = 0; b < tamanho; b++)
-        {
-                grade[a][b] = grade2[a][b];
+    for(int a =0; a < tamanho; a++){
+        for(int b = 0; b < tamanho; b++){
+            grade[a][b] = grade2[a][b];
         }
     }
 }
@@ -74,27 +121,35 @@ for(int a=0; a<tamanho; a++){
 
       vizinhos = 0;
 
+      // 1
       if(grade[a-1][b-1] == true){
         vizinhos++;
       }
+      //2
       if(grade[a-1][b] == true){
         vizinhos++;
       }
+      //3
       if(grade[a-1][b+1] == true){
         vizinhos++;
       }
+      //4
       if(grade[a][b-1] == true){
         vizinhos++;
       }
+      //5
       if(grade[a][b+1] == true){
         vizinhos++;
       }
+      //6
       if(grade[a+1][b-1] == true){
         vizinhos++;
       }
+      //7
       if(grade[a+1][b] == true){
         vizinhos++;
       }
+      //8
       if(grade[a+1][b+1] == true){
         vizinhos++;
       }
