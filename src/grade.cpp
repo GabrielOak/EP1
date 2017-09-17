@@ -3,19 +3,18 @@
 
 Grade::Grade(){
 
-
-  grade[100][100];
-  grade2[100][100];
+  grade[40][40];
+  grade2[40][40];
 }
 
 void Grade::imprimirGrade(bool){
   for(int a = 1; a < tamanho; a++){
     for( int b = 1; b < tamanho; b++){
       if (grade[a][b] == true){
-        cout << "O";
+        cout << " O";
       }
       else {
-        cout << ".";
+        cout << " .";
       }
       if(b == tamanho - 1){
         cout << endl;
@@ -23,41 +22,6 @@ void Grade::imprimirGrade(bool){
     }
   }
 
-}
-void Grade::aplicarRegras(bool){
-  bool grade2[100][100];
-  compararGrade(grade,grade2);
-
-  for(int a = 1; a < tamanho; a++){
-    for(int b = 1; b < tamanho; b++){
-      int vivo = 0;
-      for(int c = -1; c < 2; c++){
-        for(int d = -1; d < 2; d++){
-          if(!(c == 0 && d == 0)){
-            if(grade2[a+c][b+d]){
-              vivo++;
-            }
-          }
-        }
-      }
-        if(vivo < 2){
-          grade[a][b] = false;
-        }
-        else if(vivo == 3){
-          grade[a][b] = true;
-        }
-        else if(vivo > 3){
-          grade[a][b] = false;
-        }
-      }
-    }
-}
-void Grade::compararGrade(bool,bool){
-  for(int a = 0; a < tamanho; a++){
-    for(int b =0; b < tamanho; b++){
-      grade2[a][b] = grade[a][b];
-    }
-  }
 }
 void Grade::atribuirValor(bool){
   /*for (int a=0; a<tamanho; a++){
@@ -93,4 +57,63 @@ int Grade::getCoordenada(){
 }
 void Grade::setCoordenada(int coordenada){
   this->coordenada = coordenada;
+}
+void Grade::compararGrade (bool, bool){
+    for(int a =0; a < tamanho; a++)
+    {
+        for(int b = 0; b < tamanho; b++)
+        {
+                grade[a][b] = grade2[a][b];
+        }
+    }
+}
+void Grade::regras(bool, bool){
+int vizinhos = 0;
+for(int a=0; a<tamanho; a++){
+  for(int b=0; b<tamanho; b++){
+
+      vizinhos = 0;
+
+      if(grade[a-1][b-1] == true){
+        vizinhos++;
+      }
+      if(grade[a-1][b] == true){
+        vizinhos++;
+      }
+      if(grade[a-1][b+1] == true){
+        vizinhos++;
+      }
+      if(grade[a][b-1] == true){
+        vizinhos++;
+      }
+      if(grade[a][b+1] == true){
+        vizinhos++;
+      }
+      if(grade[a+1][b-1] == true){
+        vizinhos++;
+      }
+      if(grade[a+1][b] == true){
+        vizinhos++;
+      }
+      if(grade[a+1][b+1] == true){
+        vizinhos++;
+      }
+      //Regra 1 - Solidão
+      if (grade[a][b] == true && vizinhos < 2){
+          grade2[a][b] = false;
+      }
+      // Regra 2 - Superpopulação
+      else if (grade[a][b] == true && vizinhos > 3){
+          grade2[a][b] = false;
+      }
+      //Regra 3
+      else if (grade[a][b] == 0 && vizinhos == 3){
+            grade2[a][b] = true;
+      }
+      //Regra 4
+      else if (grade[a][b] == true && (vizinhos == 2 || vizinhos == 3)){
+            grade2[a][b] = true;
+      }
+    }
+  }
 }
