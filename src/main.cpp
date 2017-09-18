@@ -49,12 +49,46 @@ int main(){
   }
   else if(modo == 'o'|| modo =='O'){
     //Block
+    Grade * gradea = new Block();
+    bool grade;
+    bool grade2;
+
+    gradea->imprimirGrade(grade);
+    while(1){
+      gradea->regras(grade, grade2);
+      gradea->compararGrade(grade, grade2);
+      gradea->imprimirGrade(grade);
+      usleep(150000);
+    }
+
   }
   else if(modo == 'b' || modo == 'B'){
     //Blinker
+    Grade * gradea = new Blinker();
+    bool grade;
+    bool grade2;
+
+    gradea->imprimirGrade(grade);
+    while(1){
+      gradea->regras(grade, grade2);
+      gradea->compararGrade(grade, grade2);
+      gradea->imprimirGrade(grade);
+      usleep(150000);
+    }
   }
   else if(modo == 'u' || modo == 'U'){
     //Glider
+    Grade * gradea = new Glinder();
+    bool grade;
+    bool grade2;
+
+    gradea->imprimirGrade(grade);
+    while(1){
+      gradea->regras(grade, grade2);
+      gradea->compararGrade(grade, grade2);
+      gradea->imprimirGrade(grade);
+      usleep(150000);
+    }
   }
   else if(modo == 'g' || modo == 'G'){
     //Gosper glider gun
