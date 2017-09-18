@@ -46,11 +46,11 @@ void Grade::atribuirValor(bool){
   int i, j, n;
 
   cout << "Modo manual:" << endl;
-  cout << "Insira o numero de celulas que deseja colocar" << endl;
+  cout << "Insira o numero de células que deseja colocar" << endl;
   cin >> n;
 
   for(int a=0; a<n; a++){
-    cout << "Insira a coordenada da celula" << endl;
+    cout << "Insira a coordenada da célula" << endl;
     cin >> i >> j;
     if(i<1 || i>39){
       cout << "Coordenada invalida";
