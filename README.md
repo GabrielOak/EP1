@@ -16,7 +16,7 @@ The game of life é um autómato celular desenvolvido pelo matemático britânic
 
 # Como utilizar
 
-Ao iniciar, aparecerá as regras e em seguida, um menu com as seguntes opções: 
+Ao iniciar, aparecerá as regras e em seguida, um menu com as seguintes opções: 
 
 **M** - Para inserir as células manualmente.
 
