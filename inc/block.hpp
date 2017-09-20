@@ -5,6 +5,7 @@
 class Block : public Grade{
 public:
   Block();
+  Block(int x, int y);
   ~Block();
 };
 

@@ -20,8 +20,6 @@ Grade::Grade(){
           grade2[a][b] = false;
       }
   }
-
-
 }
 
 void Grade::imprimirGrade(bool){
@@ -43,7 +41,7 @@ void Grade::imprimirGrade(bool){
 }
 void Grade::atribuirValor(bool){
 
-  int i, j, n;
+  int i, j, n, vivos;
 
   cout << "Modo manual:" << endl;
   cout << "Insira o numero de células que deseja colocar" << endl;
@@ -66,24 +64,23 @@ void Grade::atribuirValor(bool){
     imprimirGrade(grade);
   }
 
-  for(int a=0; a<10; a++){
+  while(1){
     regras(grade, grade2);
     compararGrade(grade, grade2);
     imprimirGrade(grade);
-    usleep(200000);
-  }
-
-  /*for (int a=0; a<tamanho; a++){
-    for (int b=0; b<tamanho; b++){
-      if(a == b){
-        grade[a][b] = true;
-      }
-      else{
-        grade[a][b] = false;
+    vivos = 0;
+    for(int a=0; a<tamanho; a++){
+      for(int b=0; b<tamanho; b++){
+        if(grade[a][b] == true){
+          vivos++;
+        }
       }
     }
-  }*/
-
+    if(vivos == 0){
+      break;
+    }
+    usleep(200000);
+  }
 
 }
 void Grade::setForma(int x, int y){
@@ -100,12 +97,6 @@ int Grade::getY(){
 }
 void Grade::setY(int y){
   this->y = y;
-}
-int Grade::getCoordenada(){
-  return coordenada;
-}
-void Grade::setCoordenada(int coordenada){
-  this->coordenada = coordenada;
 }
 void Grade::compararGrade (bool, bool){
     for(int a =0; a < tamanho; a++){

@@ -5,6 +5,7 @@
 class Blinker : public Grade{
 public:
   Blinker();
+  Blinker(int x, int y);
   ~Blinker();
 };
 

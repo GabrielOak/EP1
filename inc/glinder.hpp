@@ -5,6 +5,7 @@
 class Glinder : public Grade{
 public:
   Glinder();
+  Glinder(int x, int y);
   ~Glinder();
 };
 
